@@ -1,70 +1,121 @@
-import 'package:english_words/english_words.dart' as prefix0;
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() => runApp(MyApp());
+void main() {
+// debugPaintSizeEnabled = true;
+
+runApp(MyApp());
+
+}
+
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final wordPair = WordPair.random();
+
+    Image logoSection = Image.asset(
+      'images/lake.jpg',
+      width: 600,
+      height: 240,
+      fit: BoxFit.cover,
+    );
+
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    'Oeschinen Lake Campground, Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nostrum, aperiam voluptatum neque sequi quo porro ullam magnam facere velit dicta! Eaque laborum labore blanditiis alias eum nemo modi ab?',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+                Text(
+                  'Kandersteg, Switzerland. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nostrum, aperiam voluptatum neque sequi quo porro ullam magnam facere velit dicta! Eaque laborum labore blanditiis alias eum nemo modi ab?',
+                  style: TextStyle(
+                    color: Colors.grey[500]
+                  )
+                ),
+              ],
+            ),
+          ),
+          Icon(
+            Icons.star,
+            color: Colors.red[500]
+          ),
+          Text('41'),
+        ],
+      ),
+    );
+
+    Color color = Theme.of(context).primaryColor;
+    Widget buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _buildButtonColumn(color, Icons.call, 'CALL'),
+          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+          _buildButtonColumn(color, Icons.share, 'SHARE'),
+        ],
+      ),
+    );
+
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+        'Alps. Situated 1,578 meters above sea level, it is one of the '
+        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+        'half-hour walk through pastures and pine forest, leads you to the '
+        'lake, which warms to 20 degrees Celsius in the summer. Activities '
+        'enjoyed here include rowing, and riding the summer toboggan run.',
+        softWrap: true,
+      ),
+    );
+
     return MaterialApp(
-      // title: 'Welcome to Flutter',
-      title: 'Startup Name Generator',
-      // home: Scaffold(
-      //   appBar: AppBar(
-      //   title: Text('Welcome to Flutter'),
-      // ),
-      // body: Center(
-      //   // child: Text(wordPair.asPascalCase),
-      //   child: RandomWords(),
-      // ),
-      // ),
-      home: RandomWords(),
-    );
-  }}
-
-
-class RandomWords extends StatefulWidget {
-  @override
-  RandomWordsState createState() => RandomWordsState();
-
-}
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18);
-  Widget _buildRow(prefix0.WordPair pair) {
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont
+      title: 'Flutter Layout Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Main')
+        ),
+        body: ListView(
+          children: [
+            logoSection,
+            titleSection,
+            buttonSection,
+            textSection,
+          ],
+        )
       ),
     );
   }
-  Widget _buildSuggestions() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemBuilder: (context, i) {
-        if(i.isOdd) return Divider();
 
-        final idx = i ~/ 2;
-        if(idx >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[idx]);
-      },
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color,),
+        Container(
+          margin: const EdgeInsetsDirectional.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        )
+      ],
     );
   }
-  @override
-  Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
-    // return Text(wordPair.asPascalCase);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Startup Name Generator'),
-      ),
-      body: _buildSuggestions(),
-    );
-  }
-
 }
