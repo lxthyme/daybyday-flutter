@@ -5,6 +5,10 @@ flutter emulators --launch Nexus_5X_API_29_x86
 
 flutter run
 
+# iPhone 6p
+flutter run -d b64400aef421b14dc8336abf95fade98fe4fc508 lib/ex/list.dart --track-widget-creation
+
+
 
 
 #### MAC
