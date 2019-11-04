@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
@@ -127,3 +128,4 @@ class ScreenArguments {
 
   ScreenArguments(this.title, this.message);
 }
+
