@@ -9,7 +9,7 @@ void main() {
     home: Scaffold(
         appBar: AppBar(title: Text('Flutter layout demo')),
         body: Center(
-          child: TestView(),
+          child: TestView2(),
         )),
   ));
 }
@@ -43,14 +43,15 @@ class TestView2 extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        ...new List<int>.generate(10, (i) => i + 1).map((t) => ListTile(
+        ...new List<int>.generate(30, (i) => i + 1).map((t) => ListTile(
               title: Text('inner Item $t'),
             )),
         ListView(
-          // shrinkWrap: true,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.all(8),
           children: <Widget>[
-            ...new List<int>.generate(5, (i) => i + 1).map((t) => ListTile(
+            ...new List<int>.generate(30, (i) => i + 1).map((t) => ListTile(
                   title: Text('Item $t'),
                 )),
           ],
