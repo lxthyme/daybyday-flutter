@@ -5,14 +5,51 @@ import 'route_handlers.dart';
 
 class Routes {
   static String root = '/';
+  static String detail = '/detail';
+  static String homeSimple = '/home/simple';
+  static String homeSimpleFixedTrans = '/home/fixedTrans';
+  static String homeFunc = '/home/func';
+  static String deepLink = 'home/message';
+  static String transition = 'transition';
+  static String transitionnative = 'transitionnative';
+  static String transitionnativeModal = 'transitionnativeModal';
+  static String transitioninFromLeft = 'transitioninFromLeft';
+  static String transitioninFromRight = 'transitioninFromRight';
+  static String transitioninFromBottom = 'transitioninFromBottom';
+  static String transitionfadeIn = 'transitionfadeIn';
+  static String transitioncustom = 'transitioncustom';
+  static String transitionmaterial = 'transitionmaterial';
+  static String transitionmaterialFullScreenDialog = 'transitionmaterialFullScreenDialog';
+  static String transitioncupertino = 'transitioncupertino';
+  static String transitioncupertinoFullScreenDialog = 'transitioncupertinoFullScreenDialog';
+
 
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-        print('Routes NOT FOUND!!!');
+        print('Routes NOT FOUND!!! -->context: ${context}\n$params');
+        return null;
       });
 
     router.define(root, handler: rootHandler);
+    router.define(detail, handler: detailHandler);
+    router.define(homeSimple, handler: homeRouteHandler);
+    router.define(homeSimpleFixedTrans, handler: homeRouteHandler, transitionType: TransitionType.inFromLeft);
+    router.define(homeFunc, handler: homeFuncHandler);
+
+    /// Transition All Type Test
+    router.define(transition, handler: transitionHandler);
+    router.define(transitionnative, handler: transitionHandler, transitionType: TransitionType.native);
+    router.define(transitionnativeModal, handler: transitionHandler, transitionType: TransitionType.nativeModal);
+    router.define(transitioninFromLeft, handler: transitionHandler, transitionType: TransitionType.inFromLeft);
+    router.define(transitioninFromRight, handler: transitionHandler, transitionType: TransitionType.inFromRight);
+    router.define(transitioninFromBottom, handler: transitionHandler, transitionType: TransitionType.inFromBottom);
+    router.define(transitionfadeIn, handler: transitionHandler, transitionType: TransitionType.fadeIn);
+    router.define(transitioncustom, handler: transitionHandler, transitionType: TransitionType.custom);
+    router.define(transitionmaterial, handler: transitionHandler, transitionType: TransitionType.material);
+    router.define(transitionmaterialFullScreenDialog, handler: transitionHandler, transitionType: TransitionType.materialFullScreenDialog);
+    router.define(transitioncupertino, handler: transitionHandler, transitionType: TransitionType.cupertino);
+    router.define(transitioncupertinoFullScreenDialog, handler: transitionHandler, transitionType: TransitionType.cupertinoFullScreenDialog);
 
   }
 }
