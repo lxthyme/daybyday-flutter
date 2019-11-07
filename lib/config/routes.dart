@@ -10,6 +10,11 @@ class Routes {
   static String homeSimpleFixedTrans = '/home/fixedTrans';
   static String homeFunc = '/home/func';
   static String deepLink = 'home/message';
+
+  /// fluro
+  static String fluro = 'fluro';
+
+  /// Transition Routers
   static String transition = 'transition';
   static String transitionnative = 'transitionnative';
   static String transitionnativeModal = 'transitionnativeModal';
@@ -37,8 +42,11 @@ class Routes {
     router.define(homeSimpleFixedTrans, handler: homeRouteHandler, transitionType: TransitionType.inFromLeft);
     router.define(homeFunc, handler: homeFuncHandler);
 
+    /// fluro
+    router.define(fluro, handler: fluroPageHandler);
+
     /// Transition All Type Test
-    router.define(transition, handler: transitionHandler);
+    router.define(transition, handler: transitionPageHandler);
     router.define(transitionnative, handler: transitionHandler, transitionType: TransitionType.native);
     router.define(transitionnativeModal, handler: transitionHandler, transitionType: TransitionType.nativeModal);
     router.define(transitioninFromLeft, handler: transitionHandler, transitionType: TransitionType.inFromLeft);
@@ -51,5 +59,6 @@ class Routes {
     router.define(transitioncupertino, handler: transitionHandler, transitionType: TransitionType.cupertino);
     router.define(transitioncupertinoFullScreenDialog, handler: transitionHandler, transitionType: TransitionType.cupertinoFullScreenDialog);
 
+    /// Turoist
   }
 }

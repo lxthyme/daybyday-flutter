@@ -6,8 +6,13 @@ class TransitionShowPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('$title'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Center(
+        child: Text('$title'),
+      ),
     );
   }
 }

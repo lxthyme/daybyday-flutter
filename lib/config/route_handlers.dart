@@ -1,11 +1,13 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hw/example/fluro/detail.dart';
+import 'package:flutter_hw/example/fluro/home_simple.dart';
+import 'package:flutter_hw/example/fluro/index.dart';
 import 'package:flutter_hw/example/transition/transition-show.dart';
+import 'package:flutter_hw/example/transition/transition.dart';
 import 'package:flutter_hw/helpers/color_helpers.dart';
-import 'package:flutter_hw/home/detail.dart';
 import 'package:flutter_hw/home/home.dart';
-import 'package:flutter_hw/home/home_simple.dart';
 
 var rootHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -78,10 +80,27 @@ var deepLinkHandler = Handler(
     return HomeSimpleComponent('Deep Link!!!', color, result);
   },
 );
+
+var fluroPageHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print('params: $params');
+    var name = params['title']?.first ?? '';
+    return FluroPage(title: name,);
+  },
+);
+
+var transitionPageHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print('params: $params');
+    var name = params['title']?.first ?? '';
+    return TransitionPage(title: name,);
+  },
+);
+
 var transitionHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     print('params: $params');
-    var name = params['title']?.first;
+    var name = params['title']?.first ?? '';
     return TransitionShowPage(title: name,);
   },
 );
