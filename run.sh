@@ -16,3 +16,9 @@ flutter run -d DB624845-457A-4ACD-BCBD-DE6B89B3ABB0 lib/ex/demo.dart --track-wid
 
 #### MAC
 open -a Simulator
+
+
+
+####
+# https://github.com/LXD312569496/flutter-learing/
+# https://juejin.im/post/5c0aa283518825444612a1eb
