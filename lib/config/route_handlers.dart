@@ -6,6 +6,7 @@ import 'package:flutter_hw/example/fluro/home_simple.dart';
 import 'package:flutter_hw/example/fluro/index.dart';
 import 'package:flutter_hw/example/transition/transition-show.dart';
 import 'package:flutter_hw/example/transition/transition.dart';
+import 'package:flutter_hw/example/tutorial/index.dart';
 import 'package:flutter_hw/helpers/color_helpers.dart';
 import 'package:flutter_hw/home/home.dart';
 
@@ -102,5 +103,15 @@ var transitionHandler = Handler(
     print('params: $params');
     var name = params['title']?.first ?? '';
     return TransitionShowPage(title: name,);
+  },
+);
+
+
+var tutorialHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print('context: $params');
+    print('params: $params');
+    var name = params['title']?.first ?? '';
+    return TutorialScreen(title: name);
   },
 );

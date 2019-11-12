@@ -85,15 +85,29 @@ class _ShoppingListState extends State<ShoppingList> {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Shopping App',
-    home: ShoppingList(
-      products: <Product>[
-        Product(name: 'Eggs'),
-        Product(name: 'Flour'),
-        Product(name: 'Chocolate chips'),
-      ],
-    ),
-  ));
+import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+
+class Tutorial4Screen extends StatelessWidget {
+  final String title;
+  const Tutorial4Screen({Key key, this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title)
+      ),
+      body: Column(children: <Widget>[
+          ShoppingList(
+            products: <Product>[
+              Product(name: 'Eggs'),
+              Product(name: 'Flour'),
+              Product(name: 'Chocolate chips'),
+            ],
+          ),
+        ]
+      ),
+    );
+  }
 }

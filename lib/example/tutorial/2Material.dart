@@ -7,7 +7,37 @@ void main() {
   ));
 }
 
-class TutorialHome extends StatelessWidget {
+class MyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print('button was tapped!');
+      },
+      child: Container(
+        height: 36,
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: Colors.lightGreen[500],
+        ),
+        child: Center(
+          child: Text('Engage'),
+        ),
+      ),
+    );
+  }
+
+}
+
+import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+
+class Tutorial2Screen extends StatelessWidget {
+  final String title;
+  const Tutorial2Screen({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,30 +67,4 @@ class TutorialHome extends StatelessWidget {
       ),
     );
   }
-
-}
-
-
-class MyButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('button was tapped!');
-      },
-      child: Container(
-        height: 36,
-        padding: const EdgeInsets.all(8),
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.lightGreen[500],
-        ),
-        child: Center(
-          child: Text('Engage'),
-        ),
-      ),
-    );
-  }
-
 }

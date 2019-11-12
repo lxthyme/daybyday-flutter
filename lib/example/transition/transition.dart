@@ -1,71 +1,72 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hw/components/Route/route-model.dart';
+import 'package:flutter_hw/config/routes.dart';
 
 final List<RouteModel> routeList = [
   RouteModel(
     name: 'native',
-    router: 'transitionnative',
+    router: Routes.transitionnative,
     transitionType: TransitionType.native,
     callback: () {},
   ),
   RouteModel(
     name: 'nativeModal',
-    router: 'transitionnativeModal',
+    router: Routes.transitionnativeModal,
     transitionType: TransitionType.nativeModal,
     callback: () {},
   ),
   RouteModel(
     name: 'inFromLeft',
-    router: 'transitioninFromLeft',
+    router: Routes.transitioninFromLeft,
     transitionType: TransitionType.inFromLeft,
     callback: () {},
   ),
   RouteModel(
-    name: 'inFromRight',
+    name: Routes.transitioninFromRight,
     router: 'transitioninFromRight',
     transitionType: TransitionType.inFromRight,
     callback: () {},
   ),
   RouteModel(
-    name: 'inFromBottom',
+    name: Routes.transitioninFromBottom,
     router: 'transitioninFromBottom',
     transitionType: TransitionType.inFromBottom,
     callback: () {},
   ),
   RouteModel(
     name: 'fadeIn',
-    router: 'transitionfadeIn',
+    router: Routes.transitionfadeIn,
     transitionType: TransitionType.fadeIn,
     callback: () {},
   ),
   RouteModel(
     name: 'custom',
-    router: 'transitioncustom',
+    router: Routes.transitioncustom,
     transitionType: TransitionType.custom,
     callback: () {},
   ),
   RouteModel(
     name: 'material',
-    router: 'transitionmaterial',
+    router: Routes.transitionmaterial,
     transitionType: TransitionType.material,
     callback: () {},
   ),
   RouteModel(
     name: 'materialFullScreenDialog',
-    router: 'transitionmaterialFullScreenDialog',
+    router: Routes.transitionmaterialFullScreenDialog,
     transitionType: TransitionType.materialFullScreenDialog,
     callback: () {},
   ),
   RouteModel(
     name: 'cupertino',
-    router: 'transitioncupertino',
+    router: Routes.transitioncupertino,
     transitionType: TransitionType.cupertino,
     callback: () {},
   ),
   RouteModel(
     name: 'cupertinoFullScreenDialog',
-    router: 'transitioncupertinoFullScreenDialog',
+    router: Routes.transitioncupertinoFullScreenDialog,
     transitionType: TransitionType.cupertinoFullScreenDialog,
     callback: () {},
   ),

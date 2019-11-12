@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hw/components/Route/route-model.dart';
+import 'package:flutter_hw/config/routes.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 final List<RouteModel> routeList = [
   RouteModel(
     name: 'Fluro',
-    router: 'fluro',
+    router: Routes.fluro,
     callback: () {
       // Application.router.navigateTo(context, '/transition', transition: TransitionType.cupertino).then((result) {
       //   print('R: $result');
@@ -14,7 +15,7 @@ final List<RouteModel> routeList = [
   ),
   RouteModel(
     name: 'Transition',
-    router: 'transition',
+    router: Routes.transition,
     callback: () {
       // Application.router.navigateTo(context, '/transition', transition: TransitionType.cupertino).then((result) {
       //   print('R: $result');

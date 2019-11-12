@@ -8,8 +8,34 @@ runApp(MyApp());
 
 }
 
+import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-class MyApp extends StatelessWidget {
+class Tutorial5Screen extends StatelessWidget {
+  final String title;
+  const Tutorial5Screen({Key key, this.title}) : super(key: key);
+
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color,),
+        Container(
+          margin: const EdgeInsetsDirectional.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -80,42 +106,18 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      title: 'Flutter Layout Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Main')
-        ),
-        body: ListView(
-          children: [
-            logoSection,
-            titleSection,
-            buttonSection,
-            textSection,
-          ],
-        )
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title)
       ),
-    );
-  }
-
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: color,),
-        Container(
-          margin: const EdgeInsetsDirectional.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),
-          ),
-        )
-      ],
+      body: ListView(
+        children: [
+          logoSection,
+          titleSection,
+          buttonSection,
+          textSection,
+        ],
+      ),
     );
   }
 }

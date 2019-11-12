@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 // }
 
 class MyAppBar extends StatelessWidget {
-  MyAppBar({ this.title1, this.title2 });
+  MyAppBar({this.title1, this.title2});
 
   final Widget title1;
   final Widget title2;
@@ -46,21 +46,21 @@ class MyAppBar extends StatelessWidget {
   }
 }
 
-class MyScaffold extends StatelessWidget {
+class Tutorial1Screen extends StatelessWidget {
+  final String title;
+  const Tutorial1Screen({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Column(
         children: <Widget>[
           MyAppBar(
-            title1: Text(
-              'title1',
-              style: Theme.of(context).primaryTextTheme.title
-            ),
-            title2: Text(
-              'title2',
-              style: Theme.of(context).primaryTextTheme.title
-            ),
+            title1:
+                Text('title1', style: Theme.of(context).primaryTextTheme.title),
+            title2:
+                Text('title2', style: Theme.of(context).primaryTextTheme.title),
           ),
           Expanded(
             child: Center(
@@ -71,12 +71,4 @@ class MyScaffold extends StatelessWidget {
       ),
     );
   }
-
-}
-
-void main() {
-  runApp(MaterialApp(
-    title: 'My App',
-    home: MyScaffold()
-  ));
 }

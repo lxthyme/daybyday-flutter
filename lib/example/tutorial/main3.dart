@@ -4,27 +4,20 @@ import 'package:english_words/english_words.dart';
 
 import '1Widgets.dart';
 
-void main() => runApp(MyApp());
+  class Tutorial7Screen extends StatelessWidget {
+    final String title;
+    const Tutorial7Screen({Key key, this.title}) : super(key: key);
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // final wordPair = WordPair.random();
-    return MaterialApp(
-      // title: 'Welcome to Flutter',
-      title: 'Startup Name Generator',
-      // home: Scaffold(
-      //   appBar: AppBar(
-      //   title: Text('Welcome to Flutter'),
-      // ),
-      // body: Center(
-      //   // child: Text(wordPair.asPascalCase),
-      //   child: RandomWords(),
-      // ),
-      // ),
-      home: RandomWords(),
-    );
-  }}
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('$title - Startup Name Generator')
+        ),
+        body: RandomWords(),
+      );
+    }
+  }
 
 
 class RandomWords extends StatefulWidget {

@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hw/config/application.dart';
+import 'package:flutter_hw/config/routes.dart';
 
 Widget MenuButton(BuildContext context, String assetSrc, String title, String key) {
   return Padding(
@@ -47,7 +48,6 @@ void tappedMenuButton(BuildContext context, String key) {
   String msg = '';
   String hexCode = '#fff';
   String result;
-  String _route = '';
   TransitionType transitionType = TransitionType.native;
 
   final _daysOfWeek = const [
@@ -69,7 +69,6 @@ void tappedMenuButton(BuildContext context, String key) {
       msg = 'This screen should have appeared with a slide in from left transition';
       transitionType = TransitionType.inFromLeft;
     } else if(key == 'preset-fade') {
-      _route = 'home/simple';
       hexCode = '#f700d2';
       msg = 'This screen should have appeared with a fade in transition';
       transitionType = TransitionType.fadeIn;
@@ -81,9 +80,6 @@ void tappedMenuButton(BuildContext context, String key) {
     }
 
     String route = '/home/simple?message=$msg&color_hex=$hexCode';
-    // if(_route.length > 0) {
-    //   route = '$_route?message=$msg&color_hex=$hexCode';
-    // }
 
     if(result != null) {
       route = '$route&result=$result';
@@ -115,7 +111,7 @@ void tappedMenuButton(BuildContext context, String key) {
 
     Application.router.navigateTo(
       context,
-      '/home/simple?message=$msg&color_hex=$hexCode',
+      '${Routes.homeSimple}?message=$msg&color_hex=$hexCode',
       transition: TransitionType.custom,
       transitionBuilder: transition,
       transitionDuration: const Duration(milliseconds: 600),
@@ -123,13 +119,13 @@ void tappedMenuButton(BuildContext context, String key) {
   } else if(key == 'fixed-trans') {
     Application.router.navigateTo(
       context,
-      '/home/simple?message=Hello!&color_hex=#f4424b',
+      '${Routes.homeSimple}?message=Hello!&color_hex=#f4424b',
     );
   } else {
     msg = 'You tapped the function button!';
     Application.router.navigateTo(
       context,
-      '/home/func?message=$msg',
+      '${Routes.homeFunc}?message=$msg',
     );
   }
 }
