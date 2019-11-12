@@ -76,13 +76,15 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 8.0),
-        children: widget.products.map((Product product) {
+        children: <Widget>[
+       ...widget.products.map((Product product) {
           return ShoppingListItem(
             product: product,
             inCart: _shoppingCart.contains(product),
             onCartChanged: _handleCartChanged,
             );
-        }).toList(),
+        }),
+        ],
       ),
     );
   }

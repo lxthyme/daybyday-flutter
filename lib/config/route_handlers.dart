@@ -10,6 +10,7 @@ import 'package:flutter_hw/example/tutorial/1Widgets.dart';
 import 'package:flutter_hw/example/tutorial/2Material.dart';
 import 'package:flutter_hw/example/tutorial/3State.dart';
 import 'package:flutter_hw/example/tutorial/4ShopingList.dart';
+import 'package:flutter_hw/example/tutorial/ShoppingList.dart' as prefix0;
 import 'package:flutter_hw/example/tutorial/ShoppingList.dart';
 import 'package:flutter_hw/example/tutorial/index.dart';
 import 'package:flutter_hw/example/tutorial/main.dart';
@@ -170,6 +171,10 @@ var tutorial7Handler = Handler(
 var tutorial8Handler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     var name = params['title']?.first ?? '';
-    return ShoppingListScreen(title: name);
+    var productList = List<int>.generate(20, (t) => t + 1).map((t) => prefix0.Product(name: "Name $t"));
+    return ShoppingListScreen(
+      title: name,
+      products: productList.toList(),
+    );
   },
 );
