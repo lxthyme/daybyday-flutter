@@ -44,16 +44,18 @@ class ShoppingListItem extends StatelessWidget {
 }
 
 
-class ShoppingList extends StatefulWidget {
-  ShoppingList({Key key, this.products}) : super(key: key);
-
+class ShoppingListScreen extends StatefulWidget {
+  final String title;
   final List<Product> products;
 
+  ShoppingListScreen({Key key, this.title, this.products}) : super(key: key);
+
+
   @override
-  _ShoppingListState createState() => _ShoppingListState();
+  _ShoppingListScreenState createState() => _ShoppingListScreenState();
 }
 
-class _ShoppingListState extends State<ShoppingList> {
+class _ShoppingListScreenState extends State<ShoppingListScreen> {
   Set<Product> _shoppingCart = Set<Product>();
 
   void _handleCartChanged(Product product, bool inCart) {
@@ -70,7 +72,7 @@ class _ShoppingListState extends State<ShoppingList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping List'),
+        title: Text('${widget.title} Shopping List'),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 8.0),

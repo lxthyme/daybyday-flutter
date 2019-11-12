@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Counter',
-    home: Counter()
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     title: 'Counter',
+//     home: CounterScreen()
+//   ));
+// }
 
 class CounterDisplay extends StatelessWidget {
-  CounterDisplay({ this.count });
-
   final int count;
+
+  CounterDisplay({this.count});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CounterDisplay extends StatelessWidget {
 }
 
 class CounterIncrementor extends StatelessWidget {
-  CounterIncrementor({ this.onPressed });
+  CounterIncrementor({this.onPressed});
 
   final VoidCallback onPressed;
 
@@ -32,12 +32,16 @@ class CounterIncrementor extends StatelessWidget {
   }
 }
 
-class Counter extends StatefulWidget {
+class CounterScreen extends StatefulWidget {
+  final String title;
+
+  const CounterScreen({Key key, this.title}) : super(key: key);
+
   @override
   _CounterState createState() => _CounterState();
 }
 
-class _CounterState extends State<Counter> {
+class _CounterState extends State<CounterScreen> {
   int _counter = 0;
 
   void _increment() {
@@ -48,20 +52,26 @@ class _CounterState extends State<Counter> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Column(children: <Widget>[
-          RaisedButton(
-            onPressed: _increment,
-            child: Text('Increment'),
-          ),
-          Text('Count: $_counter'),
-          Text('eg: '),
-          CounterIncrementor(onPressed: _increment),
-          CounterDisplay(count: _counter),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Row(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              RaisedButton(
+                onPressed: _increment,
+                child: Text('${widget.title} Increment'),
+              ),
+              Text('Count: $_counter'),
+              Text('eg: '),
+              CounterIncrementor(onPressed: _increment),
+              CounterDisplay(count: _counter),
+            ],
+          )
         ],
-        )
-      ],
+      ),
     );
   }
 }

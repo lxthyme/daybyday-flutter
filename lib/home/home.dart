@@ -22,6 +22,15 @@ final List<RouteModel> routeList = [
       // });
     }
   ),
+  RouteModel(
+    name: 'Tutorial',
+    router: Routes.tutorial,
+    callback: () {
+      // Application.router.navigateTo(context, '/transition', transition: TransitionType.cupertino).then((result) {
+      //   print('R: $result');
+      // });
+    }
+  ),
 ];
 
 class HomeComponent extends StatelessWidget {

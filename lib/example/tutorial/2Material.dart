@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Flutter Tutorial',
-    home: TutorialHome()
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(title: 'Flutter Tutorial', home: Tutorial2Screen()));
+// }
 
 class MyButton extends StatelessWidget {
   @override
@@ -28,11 +25,7 @@ class MyButton extends StatelessWidget {
       ),
     );
   }
-
 }
-
-import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 class Tutorial2Screen extends StatelessWidget {
   final String title;

@@ -2,30 +2,17 @@ import 'package:english_words/english_words.dart' as prefix0;
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-import '1Widgets.dart';
 
-  class Tutorial7Screen extends StatelessWidget {
-    final String title;
-    const Tutorial7Screen({Key key, this.title}) : super(key: key);
+class RandomWordsScreen extends StatefulWidget {
+  final String title;
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('$title - Startup Name Generator')
-        ),
-        body: RandomWords(),
-      );
-    }
-  }
+  const RandomWordsScreen({Key key, this.title}) : super(key: key);
 
-
-class RandomWords extends StatefulWidget {
   @override
-  RandomWordsState createState() => RandomWordsState();
+  _RandomWordsScreenState createState() => _RandomWordsScreenState();
 
 }
-class RandomWordsState extends State<RandomWords> {
+class _RandomWordsScreenState extends State<RandomWordsScreen> {
   final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18);
   Widget _buildRow(prefix0.WordPair pair) {
@@ -56,7 +43,7 @@ class RandomWordsState extends State<RandomWords> {
     // return Text(wordPair.asPascalCase);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Startup Name Generator'),
+        title: Text('${widget.title} Startup Name Generator'),
       ),
       body: _buildSuggestions(),
     );

@@ -41,7 +41,7 @@ class Routes {
 
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      print('Routes NOT FOUND!!! -->context: ${context}\n$params');
+      print('Routes NOT FOUND!!! -->context: ${context.toString()}\nparams: $params');
       return null;
     });
 
@@ -71,5 +71,14 @@ class Routes {
         handler: transitionHandler, transitionType: TransitionType.cupertinoFullScreenDialog);
 
     /// Turoist
+    router.define(tutorial, handler: tutorialHandler);
+    router.define(tutorial1, handler: tutorial1Handler);
+    router.define(tutorial2, handler: tutorial2Handler);
+    router.define(tutorial3, handler: tutorial3Handler);
+    router.define(tutorial4, handler: tutorial4Handler);
+    router.define(tutorial5, handler: tutorial5Handler);
+    router.define(tutorial6, handler: tutorial6Handler);
+    router.define(tutorial7, handler: tutorial7Handler);
+    router.define(tutorial8, handler: tutorial8Handler);
   }
 }

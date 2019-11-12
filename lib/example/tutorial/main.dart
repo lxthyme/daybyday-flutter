@@ -4,13 +4,9 @@ import 'package:flutter/material.dart';
 void main() {
 // debugPaintSizeEnabled = true;
 
-runApp(MyApp());
+runApp(Tutorial5Screen());
 
 }
-
-import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
-
 class Tutorial5Screen extends StatelessWidget {
   final String title;
   const Tutorial5Screen({Key key, this.title}) : super(key: key);

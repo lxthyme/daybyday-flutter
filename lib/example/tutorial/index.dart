@@ -6,8 +6,50 @@ import 'package:flutter_hw/config/routes.dart';
 
 final List<RouteModel> routeList = [
   RouteModel(
-    name: 'native',
-    router: Routes.transitionnative,
+    name: '1Widgets',
+    router: Routes.tutorial1,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: '2Material',
+    router: Routes.tutorial2,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: '3State',
+    router: Routes.tutorial3,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: '4ShopingList',
+    router: Routes.tutorial4,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: 'main',
+    router: Routes.tutorial5,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: 'main2',
+    router: Routes.tutorial6,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: 'main3',
+    router: Routes.tutorial7,
+    transitionType: TransitionType.native,
+    callback: () {},
+  ),
+  RouteModel(
+    name: 'ShoppingList',
+    router: Routes.tutorial8,
     transitionType: TransitionType.native,
     callback: () {},
   ),
@@ -21,8 +63,17 @@ class TutorialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Text('Hello World!'),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: <Widget>[
+          ...routeList.map((t) {
+            t.context = context;
+            return t;
+          }).map((t) => ListTile(
+                title: Text(t.name),
+                onTap: t.push,
+              ))
+        ],
       ),
     );
   }
