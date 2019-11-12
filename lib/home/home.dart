@@ -7,29 +7,18 @@ final List<RouteModel> routeList = [
   RouteModel(
     name: 'Fluro',
     router: Routes.fluro,
-    callback: () {
-      // Application.router.navigateTo(context, '/transition', transition: TransitionType.cupertino).then((result) {
-      //   print('R: $result');
-      // });
-    }
   ),
   RouteModel(
     name: 'Transition',
     router: Routes.transition,
-    callback: () {
-      // Application.router.navigateTo(context, '/transition', transition: TransitionType.cupertino).then((result) {
-      //   print('R: $result');
-      // });
-    }
   ),
   RouteModel(
-    name: 'Tutorial',
+    name: 'Tutorial233',
     router: Routes.tutorial,
-    callback: () {
-      // Application.router.navigateTo(context, '/transition', transition: TransitionType.cupertino).then((result) {
-      //   print('R: $result');
-      // });
-    }
+  ),
+  RouteModel(
+    name: 'Ex',
+    router: Routes.ex,
   ),
 ];
 

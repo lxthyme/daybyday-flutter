@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-runApp(MaterialApp(
-  title: 'Card Ex',
-  home: Scaffold(
-    appBar: AppBar(
-      title: Text('Card Ex')
-    ),
-    body: Center(
-      child: ListView(
-        padding: const EdgeInsets.all(10),
-        children: <Widget>[
-          CardEx(),
-          CardEx2(),
-        ],
-      ),
-    )
-  ),
-));
+class CardScreen extends StatelessWidget {
+  final String title;
+  const CardScreen({Key key, this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Card Ex - $title')),
+        body: Center(
+          child: ListView(
+            padding: const EdgeInsets.all(10),
+            children: <Widget>[
+              CardEx(),
+              CardEx2(),
+            ],
+          ),
+        ));
+  }
 }
-
 
 class CardEx extends StatelessWidget {
   const CardEx({Key key}) : super(key: key);

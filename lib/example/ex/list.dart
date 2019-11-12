@@ -1,13 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Flutter Tutorial',
-    home: ListWrapper(),
-  ));
-}
-
 // class ListItem extends StatelessWidget {
 //   final String title;
 
@@ -41,14 +34,17 @@ final List<Widget> ds = [
 final List<String> ds2 = <String>['A', 'B', 'C'];
 final List<int> colorCodes = <int>[600, 500, 100];
 
-class ListWrapper extends StatelessWidget {
-  final ListView list1 = ListView(
+class ListScreen extends StatelessWidget {
+  final String title;
+  ListScreen({Key key, this.title}) : super(key: key);
+
+  var list1 = ListView(
     padding: const EdgeInsets.all(16),
     // children: ds,
     children: ds,
   );
 
-  final ListView list2 = ListView.builder(
+  var list2 = ListView.builder(
     padding: const EdgeInsets.all(16),
     itemCount: ds2.length,
     itemBuilder: (BuildContext context, int idx) {
@@ -62,7 +58,7 @@ class ListWrapper extends StatelessWidget {
     },
   );
 
-  final ListView list3 = ListView.separated(
+  var list3 = ListView.separated(
     padding: const EdgeInsets.all(8),
     itemCount: ds2.length,
     itemBuilder: (BuildContext context, int idx) {
@@ -79,7 +75,11 @@ class ListWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return list3;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: list3,
+    );
   }
-
 }

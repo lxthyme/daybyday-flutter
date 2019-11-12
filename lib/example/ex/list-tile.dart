@@ -1,13 +1,5 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(
-    title: 'Flutter Tutorial',
-    home: ListTileWrapper(),
-  ));
-}
 
 int _act = 2;
 final ListTile elaborateItem = ListTile(
@@ -88,7 +80,8 @@ final ds1Child = [
     child: ListTile(
       leading: FlutterLogo(size: 72),
       title: Text('Three-line ListTile'),
-      subtitle: Text('Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, ipsa saepe deserunt fuga repellat aliquam nemo eveniet ea, dolore optio sit!'),
+      subtitle: Text(
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, ipsa saepe deserunt fuga repellat aliquam nemo eveniet ea, dolore optio sit!'),
       trailing: Icon(Icons.more_vert),
     ),
   ),
@@ -96,7 +89,8 @@ final ds1Child = [
     child: ListTile(
       leading: FlutterLogo(size: 72),
       title: Text('Three-line ListTile'),
-      subtitle: Text('Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, ipsa saepe deserunt fuga repellat aliquam nemo eveniet ea, dolore optio sit!'),
+      subtitle: Text(
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, ipsa saepe deserunt fuga repellat aliquam nemo eveniet ea, dolore optio sit!'),
       trailing: Icon(Icons.more_vert),
       isThreeLine: true,
     ),
@@ -142,10 +136,7 @@ class _VideoDescription extends StatelessWidget {
             style: const TextStyle(fontSize: 10),
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 1)),
-          Text(
-            '$viewCount views',
-            style: const TextStyle(fontSize: 10)
-          ),
+          Text('$viewCount views', style: const TextStyle(fontSize: 10)),
         ],
       ),
     );
@@ -214,7 +205,6 @@ final ds2 = ListView(
   children: ds2Children,
 );
 
-
 class _ArticleDescription extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -222,7 +212,8 @@ class _ArticleDescription extends StatelessWidget {
   final String publishDate;
   final String readDuration;
 
-  const _ArticleDescription({Key key, this.title, this.subtitle, this.author, this.publishDate, this.readDuration}) : super(key: key);
+  const _ArticleDescription({Key key, this.title, this.subtitle, this.author, this.publishDate, this.readDuration})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -291,7 +282,9 @@ class CustomListItemTwo extends StatelessWidget {
   final String publishDate;
   final String readDuration;
 
-  const CustomListItemTwo({Key key, this.thumbnail, this.title, this.subtitle, this.author, this.publishDate, this.readDuration}) : super(key: key);
+  const CustomListItemTwo(
+      {Key key, this.thumbnail, this.title, this.subtitle, this.author, this.publishDate, this.readDuration})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -331,9 +324,8 @@ final itemTwo = [
       decoration: const BoxDecoration(color: Colors.pink),
     ),
     title: 'Flutter 1.0 Launch',
-    subtitle:
-      'Flutter continues to improve and expand its horizons.'
-      'This text should max out at two lines and clip',
+    subtitle: 'Flutter continues to improve and expand its horizons.'
+        'This text should max out at two lines and clip',
     author: 'Dash',
     publishDate: 'Dec 28',
     readDuration: '5 mins',
@@ -352,24 +344,35 @@ final itemTwo = [
     thumbnail: Container(
       decoration: const BoxDecoration(color: Colors.blue),
     ),
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut perferendis, nostrum numquam asperiores voluptates fuga possimus eveniet quas illum! Modi dolores illum dicta ad. Neque, odit optio. Officia, accusamus architecto.',
-    subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut perferendis, nostrum numquam asperiores voluptates fuga possimus eveniet quas illum! Modi dolores illum dicta ad. Neque, odit optio. Officia, accusamus architecto.',
+    title:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut perferendis, nostrum numquam asperiores voluptates fuga possimus eveniet quas illum! Modi dolores illum dicta ad. Neque, odit optio. Officia, accusamus architecto.',
+    subtitle:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut perferendis, nostrum numquam asperiores voluptates fuga possimus eveniet quas illum! Modi dolores illum dicta ad. Neque, odit optio. Officia, accusamus architecto.',
     author: 'Flutter',
     publishDate: 'Feb 26',
     readDuration: '12 mins',
   )
 ];
 
-class ListTileWrapper extends StatelessWidget {
+class ListTileScreen extends StatelessWidget {
+  final String title;
+
+  const ListTileScreen({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(10),
-      children: <Widget>[
-        ...ds1Child,
-        ...ds2Children,
-        ...itemTwo,
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(10),
+        children: <Widget>[
+          ...ds1Child,
+          ...ds2Children,
+          ...itemTwo,
+        ],
+      ),
     );
   }
 }

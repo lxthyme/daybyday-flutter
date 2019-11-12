@@ -39,6 +39,15 @@ class Routes {
   static String tutorial7 = 'tutorial/7';
   static String tutorial8 = 'tutorial/8';
 
+  /// ex
+  static String ex = "ex_index";
+  static String exAlert = "ex_alert";
+  static String exCard = "ex_card";
+  static String exDrawer = "ex_drawer";
+  static String exGridView = "ex_grid-view";
+  static String exListTile = "ex_list-tile";
+  static String exList = "ex_list";
+
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       print('Routes NOT FOUND!!! -->context: ${context.toString()}\nparams: $params');
@@ -80,5 +89,14 @@ class Routes {
     router.define(tutorial6, handler: tutorial6Handler);
     router.define(tutorial7, handler: tutorial7Handler);
     router.define(tutorial8, handler: tutorial8Handler);
+
+    /// ex
+    router.define(ex, handler: exHandler);
+    router.define(exAlert, handler: exAlertHandler);
+    router.define(exCard, handler: exCardHandler);
+    router.define(exDrawer, handler: exDrawerHandler);
+    router.define(exGridView, handler: exGridViewHandler);
+    router.define(exListTile, handler: exListTileHandler);
+    router.define(exListTile, handler: exListHandler);
   }
 }

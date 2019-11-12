@@ -1,30 +1,10 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
-
-  runApp(MainView());
-}
-
-class MainView extends StatelessWidget {
-  final appTitle = 'Drawer Demo';
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: appTitle,
-      home: MainPage(
-        title: appTitle,
-      ),
-    );
-  }
-}
-
-class MainPage extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   final String title;
 
-  const MainPage({Key key, this.title}) : super(key: key);
+  const MainScreen({Key key, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

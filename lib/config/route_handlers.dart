@@ -1,6 +1,13 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hw/example/ex/alert.dart';
+import 'package:flutter_hw/example/ex/card.dart';
+import 'package:flutter_hw/example/ex/drawer.dart';
+import 'package:flutter_hw/example/ex/grid-view.dart';
+import 'package:flutter_hw/example/ex/index.dart';
+import 'package:flutter_hw/example/ex/list-tile.dart';
+import 'package:flutter_hw/example/ex/list.dart';
 import 'package:flutter_hw/example/fluro/detail.dart';
 import 'package:flutter_hw/example/fluro/home_simple.dart';
 import 'package:flutter_hw/example/fluro/index.dart';
@@ -176,5 +183,49 @@ var tutorial8Handler = Handler(
       title: name,
       products: productList.toList(),
     );
+  },
+);
+
+/// ex
+var exHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return ExScreen(title: name);
+  },
+);
+var exAlertHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return DialogDemo(title: name);
+  },
+);
+var exCardHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return CardScreen(title: name);
+  },
+);
+var exDrawerHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return MainScreen(title: name);
+  },
+);
+var exGridViewHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return GridViewScreen(title: name);
+  },
+);
+var exListTileHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return ListTileScreen(title: name);
+  },
+);
+var exListHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return ListScreen(title: name);
   },
 );
