@@ -34,11 +34,14 @@ import 'package:flutter_hw/example/tutorial/main.dart';
 import 'package:flutter_hw/example/tutorial/main2.dart';
 import 'package:flutter_hw/example/tutorial/main3.dart';
 import 'package:flutter_hw/example/tutorial/test.dart';
+import 'package:flutter_hw/gallery/app.dart';
 import 'package:flutter_hw/helpers/color_helpers.dart';
 import 'package:flutter_hw/home/home.dart';
 
 var rootHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return HomeComponent(title: 'Home Page',);
+  return HomeComponent(
+    title: 'Home Page',
+  );
 });
 
 var detailHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -306,5 +309,12 @@ var mBottomBarHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     var name = params['title']?.first ?? '';
     return BottomBarScreen(title: name);
+  },
+);
+
+/// Gallery
+var mGalleryHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    return GalleryApp();
   },
 );

@@ -61,6 +61,9 @@ class Routes {
   static String mBackdrop = "m_backdrop";
   static String mBottombar = "m_bottom-bar";
 
+  /// Gallery
+  static String gallery = "gallery";
+
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       print('Routes NOT FOUND!!!\n-->context: ${context.toString()}\n-->params: $params');
@@ -126,5 +129,8 @@ class Routes {
     router.define(material, handler: materialHandler, transitionType: TransitionType.cupertino);
     router.define(mBottombar, handler: mBottomBarHandler);
     router.define(mBackdrop, handler: mBackdropHandler);
+
+    /// Gallery
+    router.define(gallery, handler: mGalleryHandler);
   }
 }
