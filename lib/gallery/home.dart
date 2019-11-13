@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_hw/gallery/backdrop.dart';
 import 'package:flutter_hw/gallery/demos.dart';
 import 'dart:math' as math;
 
@@ -310,7 +312,7 @@ class _GalleryHomeState extends State<GalleryHome> {
         bottom: false,
         child: WillPopScope(
           onWillPop: () {
-            if(_category != null) {
+            if (_category != null) {
               setState(() {
                 _category = null;
               });
@@ -318,12 +320,72 @@ class _GalleryHomeState extends State<GalleryHome> {
             }
             return Future<bool>.value(true);
           },
-          child: Backdrop
+          child: Backdrop(
+            backTitle: const Text('Options'),
+            backLayer: widget.optionsPage,
+            frontAction: AnimatedSwitcher(
+              duration: _kFrontLayerSwitchDuration,
+              switchOutCurve: switchOutCurve,
+              switchInCurve: switchInCurve,
+              child: _category == null
+                  ? const _FlutterLogo()
+                  : IconButton(
+                      icon: const BackButtonIcon(),
+                      tooltip: 'Back',
+                      onPressed: () => setState(() => _category = null),
+                    ),
+            ),
+            frontTitle: AnimatedSwitcher(
+              duration: _kFrontLayerSwitchDuration,
+              child: _category == null ? const Text('Flutter gallery') : Text(_category.name),
+            ),
+            frontHeading: widget.testMode ? null : Container(height: 24),
+            frontLayer: AnimatedSwitcher(
+                duration: _kFrontLayerSwitchDuration,
+                switchOutCurve: switchOutCurve,
+                switchInCurve: switchInCurve,
+                layoutBuilder: centerHome ? _centerHomeLayout : _topHomeLayout,
+                child: _category == null
+                    ? _DemoPage(category: _category)
+                    : _CategoriesPage(
+                        categories: kAllGalleryDemoCategories,
+                        onCategoryTap: (t) {
+                          setState(() {
+                            _category = t;
+                          });
+                        },
+                      )),
+          ),
         ),
       ),
-    )
-    return Container(
-      child: child,
     );
+
+    assert(() {
+      GalleryHome.showPreviewBanner = false;
+      return true;
+    }());
+
+    if (GalleryHome.showPreviewBanner) {
+      home = Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          home,
+          FadeTransition(
+            opacity: CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+            child: const Banner(
+              message: 'PREVIEW',
+              location: BannerLocation.topEnd,
+            ),
+          ),
+        ],
+      );
+    }
+
+    home = AnnotatedRegion<SystemUiOverlayStyle>(
+      child: home,
+      value: SystemUiOverlayStyle.light,
+    );
+
+    return home;
   }
 }
