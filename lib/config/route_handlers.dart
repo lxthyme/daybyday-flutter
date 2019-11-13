@@ -12,24 +12,33 @@ import 'package:flutter_hw/example/fluro/detail.dart';
 import 'package:flutter_hw/example/fluro/home_simple.dart';
 import 'package:flutter_hw/example/fluro/index.dart';
 import 'package:flutter_hw/example/material/backdrop_demo.dart';
+import 'package:flutter_hw/example/material/bottom-bar.dart';
 import 'package:flutter_hw/example/material/index.dart';
 import 'package:flutter_hw/example/transition/transition-show.dart';
 import 'package:flutter_hw/example/transition/transition.dart';
+import 'package:flutter_hw/example/tutorial/10.main.dart';
 import 'package:flutter_hw/example/tutorial/1Widgets.dart';
 import 'package:flutter_hw/example/tutorial/2Material.dart';
 import 'package:flutter_hw/example/tutorial/3State.dart';
 import 'package:flutter_hw/example/tutorial/4ShopingList.dart';
+import 'package:flutter_hw/example/tutorial/5.dart';
+import 'package:flutter_hw/example/tutorial/6.Router.dart';
+import 'package:flutter_hw/example/tutorial/7.router-animation.dart';
+import 'package:flutter_hw/example/tutorial/8.router-name.dart';
+import 'package:flutter_hw/example/tutorial/9.route-arguments.dart';
 import 'package:flutter_hw/example/tutorial/ShoppingList.dart' as prefix0;
 import 'package:flutter_hw/example/tutorial/ShoppingList.dart';
+import 'package:flutter_hw/example/tutorial/app_component.dart';
 import 'package:flutter_hw/example/tutorial/index.dart';
 import 'package:flutter_hw/example/tutorial/main.dart';
 import 'package:flutter_hw/example/tutorial/main2.dart';
 import 'package:flutter_hw/example/tutorial/main3.dart';
+import 'package:flutter_hw/example/tutorial/test.dart';
 import 'package:flutter_hw/helpers/color_helpers.dart';
 import 'package:flutter_hw/home/home.dart';
 
 var rootHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return HomeComponent();
+  return HomeComponent(title: 'Home Page',);
 });
 
 var detailHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -187,6 +196,54 @@ var tutorial8Handler = Handler(
     );
   },
 );
+var tutorialLayourHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return LayourScreen(title: name);
+  },
+);
+var tutorialFirstRouteHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return FirstRouteScreen(title: name);
+  },
+);
+var tutorialHeroHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return HeroScreen(title: name);
+  },
+);
+var tutorialRouteNameHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return RouteNameScreen(title: name);
+  },
+);
+var tutorialouteArgumentsHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return RouteArgumentsScreen(title: name);
+  },
+);
+var tutorialMaterialPageRouteHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return MaterialPageRouteScreen(title: name);
+  },
+);
+var tutorialAppComponentHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return AppComponentScreen(title: name);
+  },
+);
+var tutorialTestHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return TestScreen(title: name);
+  },
+);
 
 /// ex
 var exHandler = Handler(
@@ -243,5 +300,11 @@ var mBackdropHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     var name = params['title']?.first ?? '';
     return BackdropScreen(title: name);
+  },
+);
+var mBottomBarHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return BottomBarScreen(title: name);
   },
 );

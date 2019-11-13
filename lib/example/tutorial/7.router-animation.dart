@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+class HeroScreen extends StatelessWidget {
+  final String title;
 
-runApp(HeroApp());
-}
+  const HeroScreen({Key key, this.title}) : super(key: key);
 
-class HeroApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Transition Demo',
-      home: MainScreen(),
-    );
-  }
-}
-
-class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Screen'),
+        title: Text(title),
       ),
       body: GestureDetector(
         onTap: () {

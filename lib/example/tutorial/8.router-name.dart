@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hw/6.Router.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+class RouteNameScreen extends StatelessWidget {
+  final String title;
+  const RouteNameScreen({Key key, this.title}) : super(key: key);
 
-runApp(MaterialApp(
-  // title: 'Router Name Demo',
-  // home: FirstScreen(),
-  initialRoute: '/',
-  routes: {
-    '/': (context) => FirstScreen(),
-    '/second': (context) => SecondScreen(),
-  },
-));
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // title: 'Router Name Demo',
+      // home: FirstScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => FirstScreen(),
+        '/second': (context) => SecondScreen(),
+      },
+      home: Scaffold(
+        appBar: AppBar(title: Text(title)),
+        body: Center(
+          child: Text('Hello World!'),
+        ),
+      ),
+    );
+  }
 }
 
 class FirstScreen extends StatelessWidget {

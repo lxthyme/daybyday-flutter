@@ -27,12 +27,14 @@ final List<RouteModel> routeList = [
 ];
 
 class HomeComponent extends StatelessWidget {
-  const HomeComponent({Key key}) : super(key: key);
+  final String title;
+
+  const HomeComponent({Key key, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Page')),
+      appBar: AppBar(title: Text(title)),
       body: ListView(padding: const EdgeInsets.all(16), children: <Widget>[
         // ...List<int>.generate(100, (t) => t + 1).map((t) => ListTile(
         //   title: Text('Item $t'),
@@ -45,10 +47,13 @@ class HomeComponent extends StatelessWidget {
         ...routeList.map((t) {
           t.context = context;
           return t;
-        }).map((t) => ListTile(
-              title: Text(t.name),
-              onTap: t.push,
-            ))
+        }).map(
+          (t) => Card(
+              child: ListTile(
+            title: Text(t.name),
+            onTap: t.push,
+          )),
+        )
       ]),
     );
   }

@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+class FirstRouteScreen extends StatelessWidget {
+  final String title;
 
-runApp(MaterialApp(
-  title: 'Route Demo',
-  home: FirstRoute(),
-));
-}
+  const FirstRouteScreen({Key key, this.title}) : super(key: key);
 
-
-class FirstRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'First Route',
-        ),
+        title: Text(title),
       ),
       body: Center(
         child: RaisedButton(

@@ -10,7 +10,7 @@ class RouteModel {
   final TransitionType transitionType;
   final VoidCallback callback;
 
-  RouteModel({this.context, this.name, this.router, this.transitionType = TransitionType.inFromLeft, this.callback});
+  RouteModel({this.context, this.name, this.router, this.transitionType = TransitionType.cupertino, this.callback});
 
   void push() {
     Application.router.navigateTo(context, '${this.router}?title=${this.name}', transition: this.transitionType).then((result) {

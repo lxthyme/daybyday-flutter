@@ -1,4 +1,3 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hw/components/Route/route-model.dart';
 import 'package:flutter_hw/config/routes.dart';
@@ -8,8 +7,10 @@ final List<RouteModel> routeList = [
   RouteModel(
     name: 'Backdrop',
     router: Routes.mBackdrop,
-    transitionType: TransitionType.native,
-    callback: () {},
+  ),
+  RouteModel(
+    name: 'BottomBar Navigation',
+    router: Routes.mBottombar,
   ),
 ];
 
@@ -27,10 +28,13 @@ class MaterialScreen extends StatelessWidget {
           ...routeList.map((t) {
             t.context = context;
             return t;
-          }).map((t) => ListTile(
-                title: Text(t.name),
-                onTap: t.push,
-              ))
+          }).map(
+            (t) => Card(
+                child: ListTile(
+              title: Text(t.name),
+              onTap: t.push,
+            )),
+          )
         ],
       ),
     );

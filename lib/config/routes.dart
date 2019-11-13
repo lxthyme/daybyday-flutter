@@ -38,6 +38,14 @@ class Routes {
   static String tutorial6 = 'tutorial/6';
   static String tutorial7 = 'tutorial/7';
   static String tutorial8 = 'tutorial/8';
+  static String tutorialD5 = 'tutorial/5';
+  static String tutorialD6 = 'tutorial/6';
+  static String tutorialD7 = 'tutorial/7';
+  static String tutorialD8 = 'tutorial/8';
+  static String tutorialD9 = 'tutorial/9';
+  static String tutorialD10 = 'tutorial/10';
+  static String tutorialD11AppComponent = 'tutorial/d11_app_component';
+  static String tutorialD12Test = 'tutorial/d12_test';
 
   /// ex
   static String ex = "ex_index";
@@ -51,6 +59,7 @@ class Routes {
   /// material
   static String material = "material";
   static String mBackdrop = "m_backdrop";
+  static String mBottombar = "m_bottom-bar";
 
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -58,17 +67,19 @@ class Routes {
       return null;
     });
 
-    router.define(root, handler: rootHandler);
     router.define(detail, handler: detailHandler);
     router.define(homeSimple, handler: homeRouteHandler);
     router.define(homeSimpleFixedTrans, handler: homeRouteHandler, transitionType: TransitionType.inFromLeft);
     router.define(homeFunc, handler: homeFuncHandler);
 
+    /// root
+    router.define(root, handler: rootHandler);
+
     /// fluro
-    router.define(fluro, handler: fluroPageHandler);
+    router.define(fluro, handler: fluroPageHandler, transitionType: TransitionType.cupertino);
 
     /// Transition All Type Test
-    router.define(transition, handler: transitionPageHandler);
+    router.define(transition, handler: transitionPageHandler, transitionType: TransitionType.cupertino);
     router.define(transitionnative, handler: transitionHandler, transitionType: TransitionType.native);
     router.define(transitionnativeModal, handler: transitionHandler, transitionType: TransitionType.nativeModal);
     router.define(transitioninFromLeft, handler: transitionHandler, transitionType: TransitionType.inFromLeft);
@@ -84,7 +95,7 @@ class Routes {
         handler: transitionHandler, transitionType: TransitionType.cupertinoFullScreenDialog);
 
     /// Turoist
-    router.define(tutorial, handler: tutorialHandler);
+    router.define(tutorial, handler: tutorialHandler, transitionType: TransitionType.cupertino);
     router.define(tutorial1, handler: tutorial1Handler);
     router.define(tutorial2, handler: tutorial2Handler);
     router.define(tutorial3, handler: tutorial3Handler);
@@ -93,9 +104,17 @@ class Routes {
     router.define(tutorial6, handler: tutorial6Handler);
     router.define(tutorial7, handler: tutorial7Handler);
     router.define(tutorial8, handler: tutorial8Handler);
+    router.define(tutorialD5, handler: tutorialLayourHandler);
+    router.define(tutorialD6, handler: tutorialFirstRouteHandler);
+    router.define(tutorialD7, handler: tutorialHeroHandler);
+    router.define(tutorialD8, handler: tutorialRouteNameHandler);
+    router.define(tutorialD9, handler: tutorialouteArgumentsHandler);
+    router.define(tutorialD10, handler: tutorialMaterialPageRouteHandler);
+    router.define(tutorialD11AppComponent, handler: tutorialAppComponentHandler);
+    router.define(tutorialD12Test, handler: tutorialTestHandler);
 
     /// ex
-    router.define(ex, handler: exHandler);
+    router.define(ex, handler: exHandler, transitionType: TransitionType.cupertino);
     router.define(exAlert, handler: exAlertHandler);
     router.define(exCard, handler: exCardHandler);
     router.define(exDrawer, handler: exDrawerHandler);
@@ -104,7 +123,8 @@ class Routes {
     router.define(exList, handler: exListHandler);
 
     /// material
-    router.define(material, handler: mBackdropHandler);
+    router.define(material, handler: materialHandler, transitionType: TransitionType.cupertino);
+    router.define(mBottombar, handler: mBottomBarHandler);
     router.define(mBackdrop, handler: mBackdropHandler);
   }
 }

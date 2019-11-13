@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+class RouteArgumentsScreen extends StatelessWidget {
+  final String title;
+  const RouteArgumentsScreen({Key key, this.title}) : super(key: key);
 
-runApp(MaterialApp(
-  // title: 'Router Query',
-  // home: Scaffold(
-  //   appBar: AppBar(
-  //     title: Text('Flutter Router Query')
-  //   ),
-  //   body: Center(
-  //     child: Text('Hello World!'),
-  //   )
-  // ),
-  initialRoute: '/',
-  routes: {
-    '/': (context) => FirstScreen(),
-    ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
-  },
-));
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // title: 'Router Query',
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: Text('Flutter Router Query')
+      //   ),
+      //   body: Center(
+      //     child: Text('Hello World!'),
+      //   )
+      // ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => FirstScreen(),
+        ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
+      },
+      // home: Scaffold(
+      //   appBar: AppBar(title: Text(title)),
+      //   body: Center(
+      //     child: Text('Hello World!'),
+      //   ),
+      // ),
+    );
+  }
 }
 
 class ScreenArguments {
@@ -43,10 +53,7 @@ class FirstScreen extends StatelessWidget {
             Navigator.pushNamed(
               context,
               ExtractArgumentsScreen.routeName,
-              arguments: ScreenArguments(
-                'Extract Arguments Screen',
-                'This message is extracted in the build method'
-              ),
+              arguments: ScreenArguments('Extract Arguments Screen', 'This message is extracted in the build method'),
             );
           },
         ),
@@ -60,7 +67,6 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(

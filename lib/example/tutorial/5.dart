@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+class LayourScreen extends StatelessWidget {
+  final String title;
 
-runApp(MyApp());
+  const LayourScreen({Key key, this.title}) : super(key: key);
 
-}
-
-
-class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     Image logoSection = Image.asset(
       'images/lake.jpg',
       width: 600,
@@ -32,24 +27,16 @@ class MyApp extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
                     'Oeschinen Lake Campground, Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nostrum, aperiam voluptatum neque sequi quo porro ullam magnam facere velit dicta! Eaque laborum labore blanditiis alias eum nemo modi ab?',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Text(
-                  'Kandersteg, Switzerland. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nostrum, aperiam voluptatum neque sequi quo porro ullam magnam facere velit dicta! Eaque laborum labore blanditiis alias eum nemo modi ab?',
-                  style: TextStyle(
-                    color: Colors.grey[500]
-                  )
-                ),
+                    'Kandersteg, Switzerland. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nostrum, aperiam voluptatum neque sequi quo porro ullam magnam facere velit dicta! Eaque laborum labore blanditiis alias eum nemo modi ab?',
+                    style: TextStyle(color: Colors.grey[500])),
               ],
             ),
           ),
-          Icon(
-            Icons.star,
-            color: Colors.red[500]
-          ),
+          Icon(Icons.star, color: Colors.red[500]),
           Text('41'),
         ],
       ),
@@ -80,11 +67,9 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      title: 'Flutter Layout Demo',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: Text('Main')
+          title: Text(title),
         ),
         body: ListView(
           children: [
@@ -93,9 +78,7 @@ class MyApp extends StatelessWidget {
             buttonSection,
             textSection,
           ],
-        )
-      ),
-    );
+        ));
   }
 
   Column _buildButtonColumn(Color color, IconData icon, String label) {
@@ -103,7 +86,10 @@ class MyApp extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, color: color,),
+        Icon(
+          icon,
+          color: color,
+        ),
         Container(
           margin: const EdgeInsetsDirectional.only(top: 8),
           child: Text(

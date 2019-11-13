@@ -1,32 +1,28 @@
-
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
+class MaterialPageRouteScreen extends StatelessWidget {
+  final String title;
 
-runApp(MyApp());
-}
+  const MaterialPageRouteScreen({Key key, this.title}) : super(key: key);
 
-class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: (settings) {
-        if(settings.name == PassArgumentsScreen.routeName) {
+        if (settings.name == PassArgumentsScreen.routeName) {
           final ScreenArguments args = settings.arguments;
+          print("-->ARGS: ${args.title}");
 
-          return MaterialPageRoute(
-            builder: (context) {
-              return PassArgumentsScreen(
-                title: args.title,
-                message: args.message,
-              );
-            }
-          );
+          return MaterialPageRoute(builder: (context) {
+            return PassArgumentsScreen(
+              title: title,
+              message: args.message,
+            );
+          });
         }
       },
-      title: 'Navigation with Arguments',
+      title: title,
       home: HomeScreen(),
     );
   }
@@ -68,9 +64,10 @@ class HomeScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ExtractArgumentsScreen(),
-                    settings: RouteSettings(arguments: ScreenArguments(
-                      'Extract Arguments Screen',
-                      'This message is extracted in the build method.',
+                    settings: RouteSettings(
+                      arguments: ScreenArguments(
+                        'Extract Arguments Screen',
+                        'This message is extracted in the build method.',
                       ),
                     ),
                   ),
@@ -107,7 +104,7 @@ class PassArgumentsScreen extends StatelessWidget {
     Key key,
     @required this.title,
     @required this.message,
-  }): super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -128,4 +125,3 @@ class ScreenArguments {
 
   ScreenArguments(this.title, this.message);
 }
-

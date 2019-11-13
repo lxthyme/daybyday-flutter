@@ -1,19 +1,19 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'config/application.dart';
-// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
-import 'config/routes.dart';
+import 'package:flutter_hw/config/application.dart';
+import 'package:flutter_hw/config/routes.dart';
 
-class AppComponent extends StatefulWidget {
-  AppComponent({Key key}) : super(key: key);
+class AppComponentScreen extends StatefulWidget {
+  final String title;
+
+  AppComponentScreen({Key key, @required this.title}) : super(key: key);
 
   @override
-  _AppComponentState createState() => _AppComponentState();
+  _AppComponentScreenState createState() => _AppComponentScreenState();
 }
 
-class _AppComponentState extends State<AppComponent> {
-
-  _AppComponentState() {
+class _AppComponentScreenState extends State<AppComponentScreen> {
+  _AppComponentScreenState() {
     final router = Router();
     Routes.configRoutes(router);
     Application.router = router;
@@ -22,7 +22,7 @@ class _AppComponentState extends State<AppComponent> {
   @override
   Widget build(BuildContext context) {
     final app = MaterialApp(
-      title: 'Flutter Main',
+      title: widget.title,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,

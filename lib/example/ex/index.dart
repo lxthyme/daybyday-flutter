@@ -57,10 +57,13 @@ class ExScreen extends StatelessWidget {
           ...routeList.map((t) {
             t.context = context;
             return t;
-          }).map((t) => ListTile(
-                title: Text(t.name),
-                onTap: t.push,
-              ))
+          }).map(
+            (t) => Card(
+                child: ListTile(
+              title: Text(t.name),
+              onTap: t.push,
+            )),
+          )
         ],
       ),
     );

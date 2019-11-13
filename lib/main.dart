@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hw/home/home.dart';
 
-import 'app_component.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 // void main() {
@@ -20,5 +20,5 @@ import 'app_component.dart';
 // }
 
 void main(List<String> args) {
-  runApp(AppComponent());
+  runApp(HomeComponent(title: 'Home Page',));
 }

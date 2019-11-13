@@ -327,9 +327,6 @@ class _BackdropScreenState extends State<BackdropScreen> with SingleTickerProvid
     }).toList();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Container(
         key: _backdropKey,
         color: themeData.primaryColor,
