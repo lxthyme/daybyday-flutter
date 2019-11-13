@@ -13,12 +13,16 @@ final List<RouteModel> routeList = [
     router: Routes.transition,
   ),
   RouteModel(
-    name: 'Tutorial233',
+    name: 'Tutorial',
     router: Routes.tutorial,
   ),
   RouteModel(
     name: 'Ex',
     router: Routes.ex,
+  ),
+  RouteModel(
+    name: 'Material',
+    router: Routes.material,
   ),
 ];
 
@@ -27,31 +31,25 @@ class HomeComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page')
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: <Widget>[
-          // ...List<int>.generate(100, (t) => t + 1).map((t) => ListTile(
-          //   title: Text('Item $t'),
-          //   onTap: () {
-          //     Application.router.navigateTo(context, '/detail?id=$t', transition: TransitionType.cupertino).then((result) {
-          //       print('R: $result');
-          //     });
-          //   },
-          // )),
-          ...routeList.map((t) {
-            t.context = context;
-            return t;
-          }).map((t) => ListTile(
-            title: Text(t.name),
-            onTap: t.push,
-          ))
-        ]
-      ),
+      appBar: AppBar(title: Text('Home Page')),
+      body: ListView(padding: const EdgeInsets.all(16), children: <Widget>[
+        // ...List<int>.generate(100, (t) => t + 1).map((t) => ListTile(
+        //   title: Text('Item $t'),
+        //   onTap: () {
+        //     Application.router.navigateTo(context, '/detail?id=$t', transition: TransitionType.cupertino).then((result) {
+        //       print('R: $result');
+        //     });
+        //   },
+        // )),
+        ...routeList.map((t) {
+          t.context = context;
+          return t;
+        }).map((t) => ListTile(
+              title: Text(t.name),
+              onTap: t.push,
+            ))
+      ]),
     );
   }
 }

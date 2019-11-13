@@ -2,19 +2,10 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-// debugPaintSizeEnabled = true;
-
-runApp(MaterialApp(
-  title: 'Backdrop Demo',
-  home: BackdropDemo(),
-));
-}
-
 class Category {
   final String title;
   final List<String> assets;
-  const Category({ this.title, this.assets });
+  const Category({this.title, this.assets});
 
   @override
   String toString() => '$runtimeType("$title")';
@@ -154,7 +145,8 @@ class BackdropPanel extends StatelessWidget {
   final Widget title;
   final Widget child;
 
-  const BackdropPanel({Key key, this.onTap, this.onVerticalDragUpdate, this.onVerticalDragEnd, this.title, this.child}) : super(key: key);
+  const BackdropPanel({Key key, this.onTap, this.onVerticalDragUpdate, this.onVerticalDragEnd, this.title, this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -229,15 +221,16 @@ class BackdropTitle extends AnimatedWidget {
   }
 }
 
-class BackdropDemo extends StatefulWidget {
-  static const String routeName = '/material/backdrop';
+class BackdropScreen extends StatefulWidget {
+  final String title;
+
+  const BackdropScreen({Key key, this.title}) : super(key: key);
 
   @override
-  _BackdropDemoState createState() => _BackdropDemoState();
-
+  _BackdropScreenState createState() => _BackdropScreenState();
 }
 
-class _BackdropDemoState extends State<BackdropDemo> with SingleTickerProviderStateMixin {
+class _BackdropScreenState extends State<BackdropScreen> with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'backdrop');
   AnimationController _controller;
   Category _category = allCateories[0];
@@ -280,7 +273,7 @@ class _BackdropDemoState extends State<BackdropDemo> with SingleTickerProviderSt
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
-    if(_controller.isAnimating || _controller.status == AnimationStatus.completed) {
+    if (_controller.isAnimating || _controller.status == AnimationStatus.completed) {
       return;
     }
 
@@ -288,14 +281,14 @@ class _BackdropDemoState extends State<BackdropDemo> with SingleTickerProviderSt
   }
 
   void _handleDragEnd(DragEndDetails details) {
-    if(_controller.isAnimating || _controller.status == AnimationStatus.completed) {
+    if (_controller.isAnimating || _controller.status == AnimationStatus.completed) {
       return;
     }
 
     final double flingVelocity = details.velocity.pixelsPerSecond.dy / _backdropHeight;
-    if(flingVelocity < 0) {
+    if (flingVelocity < 0) {
       _controller.fling(velocity: math.max(2, -flingVelocity));
-    } else if(flingVelocity > 0) {
+    } else if (flingVelocity > 0) {
       _controller.fling(velocity: math.min(-2, -flingVelocity));
     } else {
       _controller.fling(velocity: _controller.value < 0.5 ? -2 : 2);
@@ -309,12 +302,8 @@ class _BackdropDemoState extends State<BackdropDemo> with SingleTickerProviderSt
 
     final Animation<RelativeRect> panelAnimation = _controller.drive(
       RelativeRectTween(
-        begin: RelativeRect.fromLTRB(
-          0,
-          panelTop - MediaQuery.of(context).padding.bottom,
-          0,
-          panelTop - panelSize.height
-        ),
+        begin:
+            RelativeRect.fromLTRB(0, panelTop - MediaQuery.of(context).padding.bottom, 0, panelTop - panelSize.height),
         end: const RelativeRect.fromLTRB(0, 0, 0, 0),
       ),
     );
@@ -337,34 +326,39 @@ class _BackdropDemoState extends State<BackdropDemo> with SingleTickerProviderSt
       );
     }).toList();
 
-    return Container(
-      key: _backdropKey,
-      color: themeData.primaryColor,
-      child: Stack(
-        children: <Widget>[
-          ListTileTheme(
-            iconColor: themeData.primaryIconTheme.color,
-            textColor: themeData.primaryTextTheme.title.color.withOpacity(0.6),
-            selectedColor: themeData.primaryTextTheme.title.color,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: backdropItems,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Container(
+        key: _backdropKey,
+        color: themeData.primaryColor,
+        child: Stack(
+          children: <Widget>[
+            ListTileTheme(
+              iconColor: themeData.primaryIconTheme.color,
+              textColor: themeData.primaryTextTheme.title.color.withOpacity(0.6),
+              selectedColor: themeData.primaryTextTheme.title.color,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: backdropItems,
+                ),
               ),
             ),
-          ),
-          PositionedTransition(
-            rect: panelAnimation,
-            child: BackdropPanel(
-              onTap: _toggleBackdropPanelVisibility,
-              onVerticalDragUpdate: _handleDragUpdate,
-              onVerticalDragEnd: _handleDragEnd,
-              title: Text(_category.title),
-              child: CategoryView(category: _category),
+            PositionedTransition(
+              rect: panelAnimation,
+              child: BackdropPanel(
+                onTap: _toggleBackdropPanelVisibility,
+                onVerticalDragUpdate: _handleDragUpdate,
+                onVerticalDragEnd: _handleDragEnd,
+                title: Text(_category.title),
+                child: CategoryView(category: _category),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -391,5 +385,4 @@ class _BackdropDemoState extends State<BackdropDemo> with SingleTickerProviderSt
       ),
     );
   }
-
 }

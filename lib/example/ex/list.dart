@@ -1,17 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-// class ListItem extends StatelessWidget {
-//   final String title;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListTile(
-//       title: Text(title),
-//     );
-//   }
-
-// }
 
 final List<Widget> ds = [
   Container(
@@ -38,35 +25,40 @@ class ListScreen extends StatelessWidget {
   final String title;
   ListScreen({Key key, this.title}) : super(key: key);
 
-  var list1 = ListView(
+  final list1 = ListView(
     padding: const EdgeInsets.all(16),
-    // children: ds,
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
     children: ds,
   );
 
-  var list2 = ListView.builder(
+  final list2 = ListView.builder(
     padding: const EdgeInsets.all(16),
     itemCount: ds2.length,
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
     itemBuilder: (BuildContext context, int idx) {
       return Container(
         height: 50,
         color: Colors.amber[colorCodes[idx]],
         child: Center(
-          child: Text('Entry ${ds2[idx]}'),
+          child: Text('list2 ${ds2[idx]}'),
         ),
       );
     },
   );
 
-  var list3 = ListView.separated(
+  final list3 = ListView.separated(
     padding: const EdgeInsets.all(8),
     itemCount: ds2.length,
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
     itemBuilder: (BuildContext context, int idx) {
       return Container(
         height: 50,
         color: Colors.amber[colorCodes[idx]],
         child: Center(
-          child: Text('Entry ${ds2[idx]}'),
+          child: Text('list3 ${ds2[idx]}'),
         ),
       );
     },
@@ -77,9 +69,11 @@ class ListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("$title"),
       ),
-      body: list3,
+      body: Column(
+        children: <Widget>[...ds, list1, list2, list3],
+      ),
     );
   }
 }

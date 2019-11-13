@@ -48,9 +48,13 @@ class Routes {
   static String exListTile = "ex_list-tile";
   static String exList = "ex_list";
 
+  /// material
+  static String material = "material";
+  static String mBackdrop = "m_backdrop";
+
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      print('Routes NOT FOUND!!! -->context: ${context.toString()}\nparams: $params');
+      print('Routes NOT FOUND!!!\n-->context: ${context.toString()}\n-->params: $params');
       return null;
     });
 
@@ -97,6 +101,10 @@ class Routes {
     router.define(exDrawer, handler: exDrawerHandler);
     router.define(exGridView, handler: exGridViewHandler);
     router.define(exListTile, handler: exListTileHandler);
-    router.define(exListTile, handler: exListHandler);
+    router.define(exList, handler: exListHandler);
+
+    /// material
+    router.define(material, handler: mBackdropHandler);
+    router.define(mBackdrop, handler: mBackdropHandler);
   }
 }

@@ -11,6 +11,8 @@ import 'package:flutter_hw/example/ex/list.dart';
 import 'package:flutter_hw/example/fluro/detail.dart';
 import 'package:flutter_hw/example/fluro/home_simple.dart';
 import 'package:flutter_hw/example/fluro/index.dart';
+import 'package:flutter_hw/example/material/backdrop_demo.dart';
+import 'package:flutter_hw/example/material/index.dart';
 import 'package:flutter_hw/example/transition/transition-show.dart';
 import 'package:flutter_hw/example/transition/transition.dart';
 import 'package:flutter_hw/example/tutorial/1Widgets.dart';
@@ -227,5 +229,19 @@ var exListHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     var name = params['title']?.first ?? '';
     return ListScreen(title: name);
+  },
+);
+
+/// material
+var materialHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return MaterialScreen(title: name);
+  },
+);
+var mBackdropHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return BackdropScreen(title: name);
   },
 );
