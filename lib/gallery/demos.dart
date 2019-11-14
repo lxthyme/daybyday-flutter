@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hw/gallery/demo/shrine_demo.dart';
 import 'package:flutter_hw/gallery/icons.dart';
 
 class GalleryDemoCategory {
@@ -79,8 +80,8 @@ List<GalleryDemo> _buildGalleryDemos() {
       subtitle: 'Basic shopping app',
       iconData: GalleryIcons.shrine,
       category: _kDemos,
-      // routeName: ShrineDemo.routeName,
-      // builder: (BuildContext context) => const ShrineDemo(),
+      routeName: ShrineDemo.routeName,
+      builder: (BuildContext context) => const ShrineDemo(),
     ),
     GalleryDemo(
       title: 'Fortnightly',
@@ -555,6 +556,7 @@ List<GalleryDemo> _buildGalleryDemos() {
   }());
 
   return galleryDemos;
+  // return [galleryDemos[0]];
 }
 
 final List<GalleryDemo> kAllGalleryDemos = _buildGalleryDemos();

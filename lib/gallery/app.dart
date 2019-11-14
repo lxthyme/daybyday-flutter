@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_hw/gallery/demo/shrine/model/app_state_model.dart';
 import 'package:flutter_hw/gallery/demos.dart';
+import 'package:flutter_hw/gallery/home.dart';
 import 'package:flutter_hw/gallery/options.dart';
 import 'package:flutter_hw/gallery/scales.dart';
 import 'package:flutter_hw/gallery/theme.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GalleryApp extends StatefulWidget {
   // final UpdateU ;
@@ -37,10 +39,11 @@ class _GalleryAppState extends State<GalleryApp> {
   AppStateModel model;
 
   Map<String, WidgetBuilder> _buildRoutes() {
+    print("--->kAllGalleryDemos: $kAllGalleryDemos");
     return Map<String, WidgetBuilder>.fromIterable(
       kAllGalleryDemos,
       key: (dynamic t) => '${t.routeName}',
-      value: (dynamic t) => t.buildRoute,
+      value: (dynamic t) => t.builder,
     );
   }
 
@@ -99,9 +102,19 @@ class _GalleryAppState extends State<GalleryApp> {
 
   @override
   Widget build(BuildContext context) {
-    // Widget home = GallHome();
+    Widget home = GalleryHome(
+      testMode: widget.testMode,
+      optionsPage: GalleryOptionsPage(
+        options: _options,
+        onOptionsChanged: _handleOptionsChanged,
+        onSendFeedback: widget.onSendFeedback ??
+            () {
+              launch('https://github.com/flutter/flutter/issues/new/choose', forceSafariVC: false);
+            },
+      ),
+    );
 
-    // if (widget.updateUrlFetcher != null) {}
+    // if (widget.upd != null) {}
 
     return ScopedModel<AppStateModel>(
       model: model,
@@ -132,7 +145,7 @@ class _GalleryAppState extends State<GalleryApp> {
             ),
           );
         },
-        home: Text('Home'),
+        home: home,
       ),
     );
   }

@@ -180,7 +180,7 @@ class Backdrop extends StatefulWidget {
   _BackdropState createState() => _BackdropState();
 }
 
-class _BackdropState extends State<Backdrop> {
+class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
   AnimationController _controller;
   Animation<double> _frontOpacity;
@@ -211,7 +211,7 @@ class _BackdropState extends State<Backdrop> {
 
   double get _backdropHeight {
     final RenderBox renderBox = _backdropKey.currentContext.findRenderObject();
-    return math.max(0, renderBox.size.height - _kBackAppBarHeight - _kFrontHeadingHeight);
+    return math.max(0, renderBox.size.height - _kBackAppBarHeight - _kFrontClosedHeight);
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
@@ -242,7 +242,7 @@ class _BackdropState extends State<Backdrop> {
 
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     final Animation<RelativeRect> frontRelativeRect = _controller.drive(RelativeRectTween(
-      begin: RelativeRect.fromLTRB(0, constraints.biggest.height - _kFrontHeadingHeight, 0, 0),
+      begin: RelativeRect.fromLTRB(0, constraints.biggest.height - _kFrontClosedHeight, 0, 0),
       end: const RelativeRect.fromLTRB(0, _kBackAppBarHeight, 0, 0),
     ));
 

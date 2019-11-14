@@ -49,8 +49,8 @@ class _CategoryItem extends StatelessWidget {
     return RepaintBoundary(
       child: RawMaterialButton(
         padding: EdgeInsets.zero,
-        hoverColor: themeData.primaryColor.withAlpha(0.05),
-        splashColor: themeData.primaryColor.withAlpha(0.12),
+        hoverColor: themeData.primaryColor.withOpacity(0.05),
+        splashColor: themeData.primaryColor.withOpacity(0.12),
         highlightColor: Colors.transparent,
         onPressed: onTap,
         child: Column(
@@ -101,7 +101,7 @@ class _CategoriesPage extends StatelessWidget {
       label: 'categories',
       explicitChildNodes: true,
       child: SingleChildScrollView(
-        key: const PageStorage<String>('categories'),
+        key: const PageStorageKey<String>('categories'),
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             final double columnWidth = constraints.biggest.width / columnCount.toDouble();
@@ -128,6 +128,7 @@ class _CategoriesPage extends StatelessWidget {
                         child: _CategoryItem(
                           category: category,
                           onTap: () {
+                            print("---------------------------->>>>");
                             onCategoryTap(category);
                           },
                         ),
@@ -188,7 +189,7 @@ class _DemoItem extends StatelessWidget {
 
     return RawMaterialButton(
       padding: EdgeInsets.zero,
-      splashColor: themeData.primaryColor.withAlpha(0.12),
+      splashColor: themeData.primaryColor.withOpacity(0.12),
       highlightColor: Colors.transparent,
       onPressed: () {
         _launchDemo(context);
@@ -222,12 +223,13 @@ class _DemoItem extends StatelessWidget {
   }
 }
 
-class _DemoPage extends StatelessWidget {
+class _DemosPage extends StatelessWidget {
   final GalleryDemoCategory category;
-  const _DemoPage({Key key, this.category}) : super(key: key);
+  const _DemosPage({Key key, this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print("--->kGalleryCategoryToDemos");
     final double windowBottomPadding = MediaQuery.of(context).padding.bottom;
     return KeyedSubtree(
       key: const ValueKey<String>('GalleryDemoList'),
@@ -260,8 +262,8 @@ class GalleryHome extends StatefulWidget {
   _GalleryHomeState createState() => _GalleryHomeState();
 }
 
-class _GalleryHomeState extends State<GalleryHome> {
-  static final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<Scaffold>();
+class _GalleryHomeState extends State<GalleryHome> with SingleTickerProviderStateMixin {
+  static final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   AnimationController _controller;
   GalleryDemoCategory _category;
@@ -270,11 +272,11 @@ class _GalleryHomeState extends State<GalleryHome> {
     List<Widget> children = previewChildren;
     if (currentChild != null) {
       children = children.toList()..add(currentChild);
-      return Stack(
-        alignment: Alignment.topCenter,
-        children: children,
-      );
     }
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: children,
+    );
   }
 
   static const AnimatedSwitcherLayoutBuilder _centerHomeLayout = AnimatedSwitcher.defaultLayoutBuilder;
@@ -283,7 +285,7 @@ class _GalleryHomeState extends State<GalleryHome> {
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(microseconds: 600),
+      duration: const Duration(milliseconds: 600),
       debugLabel: 'preview banner',
       vsync: this,
     )..forward();
@@ -345,8 +347,8 @@ class _GalleryHomeState extends State<GalleryHome> {
                 switchOutCurve: switchOutCurve,
                 switchInCurve: switchInCurve,
                 layoutBuilder: centerHome ? _centerHomeLayout : _topHomeLayout,
-                child: _category == null
-                    ? _DemoPage(category: _category)
+                child: _category != null
+                    ? _DemosPage(category: _category)
                     : _CategoriesPage(
                         categories: kAllGalleryDemoCategories,
                         onCategoryTap: (t) {

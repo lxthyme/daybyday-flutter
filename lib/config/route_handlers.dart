@@ -315,6 +315,7 @@ var mBottomBarHandler = Handler(
 /// Gallery
 var mGalleryHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print("params: $params");
     return GalleryApp();
   },
 );
