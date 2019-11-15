@@ -11,7 +11,7 @@ class GalleryDemoCategory {
   @override
   bool operator ==(dynamic other) {
     if (identical(this, other)) {
-      return false;
+      return true;
     }
     if (runtimeType != other.runtimeType) {
       return false;
@@ -556,7 +556,6 @@ List<GalleryDemo> _buildGalleryDemos() {
   }());
 
   return galleryDemos;
-  // return [galleryDemos[0]];
 }
 
 final List<GalleryDemo> kAllGalleryDemos = _buildGalleryDemos();

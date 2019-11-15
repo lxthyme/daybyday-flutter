@@ -10,24 +10,26 @@ import 'package:flutter_hw/gallery/home.dart';
 import 'package:flutter_hw/gallery/options.dart';
 import 'package:flutter_hw/gallery/scales.dart';
 import 'package:flutter_hw/gallery/theme.dart';
+import 'package:flutter_hw/gallery/updater.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GalleryApp extends StatefulWidget {
-  // final UpdateU ;
+  final UpdateUrlFetcher updateUrlFetcher;
   final bool enablePerformanceOverlay;
   final bool enableRasterCacheImagesCheckerboard;
   final bool enableOffscreenLayerCheckerboard;
   final VoidCallback onSendFeedback;
   final bool testMode;
-  GalleryApp(
-      {Key key,
-      this.enablePerformanceOverlay = true,
-      this.enableRasterCacheImagesCheckerboard = true,
-      this.enableOffscreenLayerCheckerboard = true,
-      this.onSendFeedback,
-      this.testMode = false})
-      : super(key: key);
+  GalleryApp({
+    Key key,
+    this.enablePerformanceOverlay = true,
+    this.enableRasterCacheImagesCheckerboard = true,
+    this.enableOffscreenLayerCheckerboard = true,
+    this.onSendFeedback,
+    this.testMode = false,
+    this.updateUrlFetcher,
+  }) : super(key: key);
 
   @override
   _GalleryAppState createState() => _GalleryAppState();
@@ -39,7 +41,6 @@ class _GalleryAppState extends State<GalleryApp> {
   AppStateModel model;
 
   Map<String, WidgetBuilder> _buildRoutes() {
-    print("--->kAllGalleryDemos: $kAllGalleryDemos");
     return Map<String, WidgetBuilder>.fromIterable(
       kAllGalleryDemos,
       key: (dynamic t) => '${t.routeName}',
@@ -114,7 +115,12 @@ class _GalleryAppState extends State<GalleryApp> {
       ),
     );
 
-    // if (widget.upd != null) {}
+    if (widget.updateUrlFetcher != null) {
+      home = Updater(
+        updateUrlFetcher: widget.updateUrlFetcher,
+        child: home,
+      );
+    }
 
     return ScopedModel<AppStateModel>(
       model: model,
