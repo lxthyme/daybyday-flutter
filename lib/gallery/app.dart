@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:flutter_hw/config/routes.dart';
 import 'package:flutter_hw/gallery/demo/shrine/model/app_state_model.dart';
 import 'package:flutter_hw/gallery/demos.dart';
 import 'package:flutter_hw/gallery/home.dart';
@@ -15,6 +16,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GalleryApp extends StatefulWidget {
+  final String title;
   final UpdateUrlFetcher updateUrlFetcher;
   final bool enablePerformanceOverlay;
   final bool enableRasterCacheImagesCheckerboard;
@@ -23,6 +25,7 @@ class GalleryApp extends StatefulWidget {
   final bool testMode;
   GalleryApp({
     Key key,
+    this.title,
     this.enablePerformanceOverlay = true,
     this.enableRasterCacheImagesCheckerboard = true,
     this.enableOffscreenLayerCheckerboard = true,

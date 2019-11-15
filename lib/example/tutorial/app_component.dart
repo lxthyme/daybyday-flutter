@@ -14,9 +14,12 @@ class AppComponentScreen extends StatefulWidget {
 
 class _AppComponentScreenState extends State<AppComponentScreen> {
   _AppComponentScreenState() {
-    final router = Router();
-    Routes.configRoutes(router);
-    Application.router = router;
+    if (Application.router == null) {
+      final router = Router();
+      Routes.configRoutes(router);
+      Application.router = router;
+      print('>>>??Application.router: ${Application.router}');
+    }
   }
 
   @override

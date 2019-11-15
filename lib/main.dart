@@ -20,12 +20,12 @@ import 'package:flutter_hw/home/home.dart';
 // ));
 // }
 
-// void main(List<String> args) {
-//   runApp(MaterialApp(
-//     home: HomeComponent(title: 'Home Page',),
-//   ));
-// }
-
-void main() {
-  runApp(GalleryApp());
+void main(List<String> args) {
+  runApp(MaterialApp(
+    home: HomeComponent(title: 'Home Page',),
+  ));
 }
+
+// void main() {
+//   runApp(GalleryApp());
+// }
