@@ -64,6 +64,10 @@ class Routes {
   /// Gallery
   static String gallery = "gallery";
 
+  /// Gallery test
+  static String galleryTest = "gallery-test";
+  static String gStack = "gallery-stack";
+
   static void configRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       print('Routes NOT FOUND!!!\n-->context: ${context.toString()}\n-->params: $params');
@@ -132,5 +136,9 @@ class Routes {
 
     /// Gallery
     router.define(gallery, handler: mGalleryHandler);
+
+    /// Gallery test
+    router.define(galleryTest, handler: galleryTestHandler);
+    router.define(gStack, handler: gStackHandler);
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
-import 'package:flutter_hw/config/routes.dart';
 import 'package:flutter_hw/gallery/demo/shrine/model/app_state_model.dart';
 import 'package:flutter_hw/gallery/demos.dart';
 import 'package:flutter_hw/gallery/home.dart';

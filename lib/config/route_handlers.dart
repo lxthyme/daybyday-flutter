@@ -11,6 +11,8 @@ import 'package:flutter_hw/example/ex/list.dart';
 import 'package:flutter_hw/example/fluro/detail.dart';
 import 'package:flutter_hw/example/fluro/home_simple.dart';
 import 'package:flutter_hw/example/fluro/index.dart';
+import 'package:flutter_hw/example/gallery-test/index.dart';
+import 'package:flutter_hw/example/gallery-test/stack.dart';
 import 'package:flutter_hw/example/material/backdrop_demo.dart';
 import 'package:flutter_hw/example/material/bottom-bar.dart';
 import 'package:flutter_hw/example/material/index.dart';
@@ -317,5 +319,19 @@ var mGalleryHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     var name = params['title']?.first ?? '';
     return GalleryApp(title: name);
+  },
+);
+
+/// Gallery test
+var galleryTestHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return GalleryTestScreen(title: name);
+  },
+);
+var gStackHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    var name = params['title']?.first ?? '';
+    return StackScreen(title: name);
   },
 );

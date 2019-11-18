@@ -28,6 +28,10 @@ final List<RouteModel> routeList = [
     name: 'Gallery',
     router: Routes.gallery,
   ),
+  RouteModel(
+    name: 'Gallery test',
+    router: Routes.galleryTest,
+  ),
 ];
 
 class HomeComponent extends StatelessWidget {
