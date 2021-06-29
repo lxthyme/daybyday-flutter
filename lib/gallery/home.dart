@@ -323,7 +323,7 @@ class _GalleryHomeState extends State<GalleryHome> with SingleTickerProviderStat
             return Future<bool>.value(true);
           },
           child: Backdrop(
-            backTitle: const Text('Options'),
+            backTitle: const Text('backTitle: Options'),
             backLayer: widget.optionsPage,
             frontAction: AnimatedSwitcher(
               duration: _kFrontLayerSwitchDuration,
@@ -339,7 +339,7 @@ class _GalleryHomeState extends State<GalleryHome> with SingleTickerProviderStat
             ),
             frontTitle: AnimatedSwitcher(
               duration: _kFrontLayerSwitchDuration,
-              child: _category == null ? const Text('Flutter gallery') : Text(_category.name),
+              child: _category == null ? const Text('frontTitle: Flutter gallery') : Text(_category.name),
             ),
             frontHeading: widget.testMode ? null : Container(height: 24),
             frontLayer: AnimatedSwitcher(

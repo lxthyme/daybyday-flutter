@@ -269,7 +269,8 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
           ),
           Expanded(
             child: Visibility(
-              child: widget.backLayer,
+              // child: widget.backLayer,
+              child: Text('widget.backLayer'),
               visible: _controller.status != AnimationStatus.completed,
               maintainState: true,
             ),
@@ -298,7 +299,8 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
             controller: _controller,
             child: FadeTransition(
               opacity: _frontOpacity,
-              child: widget.frontLayer,
+              // child: widget.frontLayer,
+              child: Text('widget.frontLayer'),
             ),
           ),
         ),
